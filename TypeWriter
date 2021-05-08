@@ -8,7 +8,7 @@ public class TypeWriter : MonoBehaviour
     public float delay = 0.1f;
     public AudioClip TypeSound;
     [Multiline]
-    public string yazi;
+    public string writ;
   
     AudioSource audSrc;
     Text thisText;
@@ -23,15 +23,18 @@ public class TypeWriter : MonoBehaviour
 
     IEnumerator TypeWrite()
     {
-        foreach(char i in yazi)
+        foreach(char i in writ)
         {
             thisText.text += i.ToString();
 
             audSrc.pitch = Random.Range(0.8f, 1.2f);
             audSrc.PlayOneShot(TypeSound);
 
-            if(i.ToString() == ".") { yield return new WaitForSeconds(1); }
-            else { yield return new WaitForSeconds(delay); }          
+            if(i.ToString() == ".") { 
+            yield return new WaitForSeconds(1); 
+            } else { 
+            yield return new WaitForSeconds(delay); 
+            }          
         }
     }
 }
